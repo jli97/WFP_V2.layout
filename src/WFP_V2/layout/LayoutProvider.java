@@ -16,10 +16,9 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import WFP_V2.layout.options.LayoutOptions;
 
 /**
- * A simple layout algorithm class. This algorithm already supports a number of layout options, places nodes, and
- * routes edges.
+ * The actual algorithm responsible for placing nodes
  */
-public class LayoutLayoutProvider extends AbstractLayoutProvider {
+public class LayoutProvider extends AbstractLayoutProvider {
 
     @Override
     public void layout(ElkNode layoutGraph, IElkProgressMonitor progressMonitor) {
@@ -38,7 +37,7 @@ public class LayoutLayoutProvider extends AbstractLayoutProvider {
         if (layoutGraph.getProperty(LayoutOptions.REVERSE_INPUT)) {
             Collections.reverse(nodes);
         }
-        
+
         // Create a sub monitor for node placement
         IElkProgressMonitor nodePlacingMonitor = progressMonitor.subTask(1);
         nodePlacingMonitor.begin("Node Spacing", nodes.size());

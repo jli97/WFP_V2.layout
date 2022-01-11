@@ -4,7 +4,7 @@
    <extension
          point="org.eclipse.sirius.diagram.elk.layout.extension">
       <layoutExtension
-            class="WFP_V2.layout.ELKLayoutExtension2">
+            class="WFP_V2.layout.ELKLayoutExtension">
       </layoutExtension>
    </extension>
 

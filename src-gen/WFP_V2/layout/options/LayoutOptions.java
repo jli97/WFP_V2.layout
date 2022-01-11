@@ -1,7 +1,7 @@
 package WFP_V2.layout.options;
 
-import WFP_V2.layout.LayoutLayoutProvider;
 import WFP_V2.layout.LayoutMetadataProvider;
+import WFP_V2.layout.LayoutProvider;
 import org.eclipse.elk.core.AbstractLayoutProvider;
 import org.eclipse.elk.core.data.ILayoutMetaDataProvider;
 import org.eclipse.elk.core.data.LayoutAlgorithmData;
@@ -79,7 +79,7 @@ public class LayoutOptions implements ILayoutMetaDataProvider {
    */
   public static class LayoutFactory implements org.eclipse.elk.core.util.IFactory<AbstractLayoutProvider> {
     public AbstractLayoutProvider create() {
-      AbstractLayoutProvider provider = new LayoutLayoutProvider();
+      AbstractLayoutProvider provider = new LayoutProvider();
       provider.initialize("");
       return provider;
     }

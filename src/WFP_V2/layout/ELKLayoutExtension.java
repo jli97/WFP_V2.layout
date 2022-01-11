@@ -16,35 +16,29 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.elk.graph.ElkGraphElement;
 
-public class ELKLayoutExtension2 implements IELKLayoutExtension {
+/**
+ * Extension point used to provide the "Object Type" (Data Element, Constraint etc) of a node to LayoutProvider
+ * */
+public class ELKLayoutExtension implements IELKLayoutExtension {
 
-	public ELKLayoutExtension2() {
+	public ELKLayoutExtension() {
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
+	// Runs before LayoutProvider runs layout
 	public void beforeELKLayout(LayoutMapping layoutMapping) {
-		// TODO Auto-generated constructor stub
-		
+		// Adds a new property named ObjectName. This property represents the Sirius element name (Data Element, Constraint, etc)
 		ArrayList<ElkNode> nodes = new ArrayList<>(layoutMapping.getLayoutGraph().getChildren());
 		for (Entry<ElkGraphElement, Object> entry : layoutMapping.getGraphMap().entrySet()) {
 		    Object editPart = entry.getValue();
-		    //System.out.println(entry.getKey());
-		    //System.out.println(entry.getValue().getClass());
 		    
 		    if (editPart instanceof DNodeListEditPart) {
 		        EObject siriusDiagramElement = ((DNodeListEditPart) editPart).resolveTargetSemanticElement();
 		        String elementName = siriusDiagramElement.eClass().getName();
 		        IProperty<String> property = new Property("ObjectName");
+		        System.out.println(elementName);
 		        entry.getKey().setProperty(property, elementName);
-		        /*
-		        if (siriusDiagramElement instanceof DDiagramElement) {
-		        	EObject ecoreObj = ((DDiagramElement) siriusDiagramElement).getTarget();
-		        	System.out.println("Got here");
-		        	System.out.println(ecoreObj.getClass().getSimpleName());
-		        }
-		        System.out.println(siriusDiagramElement.getClass().getSimpleName());
-		        */
 		    }
 		}
 		

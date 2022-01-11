@@ -1,7 +1,7 @@
 package WFP_V2.layout
 
-import WFP_V2.layout.LayoutLayoutProvider
 import org.eclipse.elk.core.math.ElkPadding
+import WFP_V2.layout.LayoutProvider
 
 bundle {
     metadataClass LayoutMetadataProvider
@@ -17,7 +17,7 @@ option reverseInput : boolean {
     targets parents
 }
 
-algorithm Layout(LayoutLayoutProvider) {
+algorithm Layout(LayoutProvider) {
     label "WF+ Layout"
     description "Custom layout designed for WF+"
     metadataClass options.LayoutOptions
